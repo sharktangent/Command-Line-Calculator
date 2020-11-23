@@ -7,21 +7,19 @@
  */
 //==============================================================================
 
-#include "Add_Command.h"
+#ifndef _MULTIPLY_NODE_H_
+#define _MULTIPLY_BODE_H_
 
-//
-// ~Add_Command
-//
-Add_Command::~Add_Command (void)
-{
-    // no data members on heap
-}
+#include "Binary_Op_Node.h"
 
-//
-// set_priority
-//
-int Add_Command::priority (void)
+class Multiply_Node : public Binary_Op_Node
 {
-    // return a priority of 1 fotr addition
-    return 1;
-}
+public:
+    Multiply_Node (void);
+
+    int eval (int n1, int n2) override;
+
+    int priority (void) override;
+};
+
+#endif

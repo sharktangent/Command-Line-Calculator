@@ -6,30 +6,26 @@
  * on this assignment.
  */
 //==============================================================================
-#ifndef _BINARY_OP_COMMAND_H_
-#define _BINARY_OP_COMMAND_H_
 
-#include "Expr_Command.h"
-#include "Stack.h"
-#include <stdexcept>
+#ifndef _ADD_NODE_H_
+#define _ADD_NODE_H_
 
-class Binary_Op_Command : public Expr_Command
+#include "Binary_Op_Node.h"
+#include "Add_Command.h"
+
+class Add_Node : public Binary_Op_Node, public Add_Command
 {
 public:
-    virtual ~Binary_Op_Command (void) = 0;
-    
+    Add_Node (void);
+
     /**
-     * Evaluate the result of the command
+     * Evaluate the sum of two numbers.
      * 
      * @param[in]       n1      First number in the operation
      * @param[in]       n2      Second number in the operation
-     * @return          Result of the command.
+     * @return          Sum of n1 and n2
      */
-    virtual int eval (int n1, int n2) = 0;
-
-    virtual int priority (void) = 0;
-
+    int eval (int n1, int n2) override;
 };
-
 
 #endif

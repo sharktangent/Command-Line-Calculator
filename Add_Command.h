@@ -14,21 +14,10 @@
 class Add_Command : public Binary_Op_Command
 {
 public:
-    /// Initialization Constructors
-    Add_Command (Stack <int> & s);
+    /// destructor
+    virtual ~Add_Command (void) = 0;
 
-    /**
-     * Evaluate the sum of two numbers.
-     * 
-     * @param[in]       n1      First number in the operation
-     * @param[in]       n2      Second number in the operation
-     * @return          Sum of n1 and n2
-     */
-    int evaluate (int n1, int n2) const override;
-
-protected:
-    /// sets the priority value for the command
-    void set_priority (void) override;
+    int priority (void) override;
 };
 
 #endif

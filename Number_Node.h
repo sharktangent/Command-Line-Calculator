@@ -7,21 +7,21 @@
  */
 //==============================================================================
 
-#include "Add_Command.h"
+#ifndef _NUMBER_NODE_H_
+#define _NUMBER_NODE_H_
 
-//
-// ~Add_Command
-//
-Add_Command::~Add_Command (void)
-{
-    // no data members on heap
-}
+#include "Expr_Node.h"
+#include "Number_Command.h"
 
-//
-// set_priority
-//
-int Add_Command::priority (void)
+class Number_Node : public Expr_Node, public Number_Command
 {
-    // return a priority of 1 fotr addition
-    return 1;
-}
+public:
+    /// Constructor
+    Number_Node (int n);
+
+
+    int execute (void) override;
+
+};
+
+#endif

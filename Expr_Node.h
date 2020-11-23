@@ -7,21 +7,16 @@
  */
 //==============================================================================
 
-#include "Add_Command.h"
+#ifndef _EXPR_NODE_H_
+#define _EXPR_NODE_H_
 
-//
-// ~Add_Command
-//
-Add_Command::~Add_Command (void)
-{
-    // no data members on heap
-}
+#include "Expr_Command.h"
 
-//
-// set_priority
-//
-int Add_Command::priority (void)
-{
-    // return a priority of 1 fotr addition
-    return 1;
-}
+class Expr_Node : public Expr_Command
+{   
+public:
+    /// Destructor
+    virtual ~Expr_Node (void) = 0;
+};
+
+#endif
