@@ -1,0 +1,63 @@
+project (assignment3) {
+    exename = assignment3
+    install = .
+
+    specific (make, gnuance) {
+        compile_flags += -std=c++11
+        compile_flags += -g
+    }
+
+    Source_Files {
+        driver.cpp
+        Expr_Command.cpp
+        Number_Command.cpp
+        Binary_Op_Command.cpp
+        Add_Command.cpp
+        Subtract_Command.cpp
+        Multiply_Command.cpp
+        Divide_Command.cpp
+        Mod_Command.cpp
+        Expr_Command_Factory.cpp
+        Stack_Expr_Command_Factory.cpp
+        Calculator.cpp
+    }
+
+    Template_Files {
+        Array_Base.cpp
+        Array.cpp
+        Fixed_Array.cpp
+        Stack.cpp
+        Queue.cpp
+        Iterator.cpp
+        Array_Iterator.cpp
+    }
+
+    Header_Files {
+        Array_Base.h
+        Array.h
+        Fixed_Array.h
+        Stack.h
+        Queue.h
+        Iterator.h
+        Array_Iterator.h
+        Expr_Command.h
+        Number_Command.h
+        Binary_Op_Command.h
+        Add_Command.h
+        Subtract_Command.h
+        Multiply_Command.h
+        Divide_Command.h
+        Mod_Command.h
+        Expr_Command_Factory.h
+        Stack_Expr_Command_Factory.h
+        Calculator.h
+    }
+
+    Inline_Files {
+        Array_Base.inl
+        Array.inl
+        Fixed_Array.inl
+        Stack.inl
+        Queue.inl
+    }
+}
