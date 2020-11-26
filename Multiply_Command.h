@@ -17,6 +17,9 @@ public:
     /// Initialization Constructor
     Multiply_Command (Stack <int> & s);
 
+    /// Destructor
+    ~Multiply_Command (void);
+
     /**
      * Get the product of two numbers.
      * 
@@ -24,10 +27,11 @@ public:
      * @param[in]       n2      Second factor.
      * @return          Product of n1 and n2.
      */
-    int evaluate (int n1, int n2) const override;
-protected:
-    /// sets the priority value for the command
-    void set_priority (void) override;
+    int eval (int n1, int n2) override;
+
+    /// Gets the priority for the command
+    int priority (void) override;
+
 };
 
 #endif

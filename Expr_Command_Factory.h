@@ -15,8 +15,6 @@
 #include "Multiply_Command.h"
 #include "Divide_Command.h"
 #include "Mod_Command.h"
-//#include "Open_Par_Command.h"
-//#include "Closed_Par_Command.h"
 
 class Expr_Command_Factory
 {

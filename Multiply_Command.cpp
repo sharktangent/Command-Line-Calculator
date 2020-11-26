@@ -15,23 +15,31 @@
 Multiply_Command::Multiply_Command (Stack <int> & s)
 : Binary_Op_Command (s)
 {
-    this->set_priority();
+
+}
+
+//
+// ~Multiply_Command
+//
+Multiply_Command::~Multiply_Command (void)
+{
+    // No members on heap
 }
 
 //
 // evaluate
 //
-int Multiply_Command::evaluate (int n1, int n2) const
+int Multiply_Command::eval (int n1, int n2)
 {
     // Return the product of n1 and n2
     return n1 * n2;
 }
 
 //
-// set_priority
+// priority
 //
-void Multiply_Command::set_priority (void)
+int Multiply_Command::priority (void)
 {
     // priority for multiply is 2
-    this->priority_ = 2;
+    return 2;
 }

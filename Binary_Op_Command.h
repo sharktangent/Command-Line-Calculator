@@ -16,8 +16,10 @@
 class Binary_Op_Command : public Expr_Command
 {
 public:
-    virtual ~Binary_Op_Command (void) = 0;
-    
+
+    /// Execute the Binary operation command.
+    void execute (void) override;
+
     /**
      * Evaluate the result of the command
      * 
@@ -29,7 +31,10 @@ public:
 
     virtual int priority (void) = 0;
 
-};
 
+protected:
+    /// Initialization Constructor
+    Binary_Op_Command (Stack <int> & s);
+};
 
 #endif

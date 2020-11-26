@@ -10,18 +10,36 @@
 #include "Add_Command.h"
 
 //
+// Add_Command
+//
+Add_Command::Add_Command (Stack <int> & s)
+: Binary_Op_Command (s)
+{
+
+}
+
+//
 // ~Add_Command
 //
 Add_Command::~Add_Command (void)
 {
-    // no data members on heap
+    // No members on heap
 }
 
 //
-// set_priority
+// evaluate
 //
-int Add_Command::priority (void)
+int Add_Command::eval (int n1, int n2)
 {
-    // return a priority of 1 fotr addition
+    // Return the sum of n1 and n2
+    return n1 + n2;
+}
+
+//
+// priority
+//
+int Add_Command::priority (void) 
+{
+    // priority for add is 1
     return 1;
 }

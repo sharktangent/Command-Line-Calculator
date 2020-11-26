@@ -13,14 +13,18 @@
 #include "Expr_Node.h"
 #include "Binary_Op_Command.h"
 
-class Binary_Op_Node :public Binary_Op_Command, public Expr_Node
+class Binary_Op_Node : public Expr_Node
 {
 public:
 
-    /// destructor
+    /// Destructor
     ~Binary_Op_Node (void);
 
     int execute (void) override;
+
+    virtual int eval (int num1, int n2) = 0;
+
+    virtual int priority (void) = 0;
 
     Expr_Node * right (void);
 

@@ -15,23 +15,31 @@
 Subtract_Command::Subtract_Command (Stack <int> & s)
 : Binary_Op_Command (s)
 {
-    this->set_priority();
+    
+}
+
+//
+// ~Subtract_Command
+//
+Subtract_Command::~Subtract_Command (void)
+{
+    // No members on heap
 }
 
 //
 // evaluate
 //
-int Subtract_Command::evaluate (int n1, int n2) const
+int Subtract_Command::eval (int n1, int n2)
 {
     // Return the difference of n1 and n2
     return n1 - n2;
 }
 
 //
-// set_priority
+// priority
 //
-void Subtract_Command::set_priority (void)
+int Subtract_Command::priority (void)
 {
     // priority for subtract is 1.
-    this->priority_ = 1;
+    return 1;
 }

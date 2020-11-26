@@ -13,10 +13,14 @@
 #include "Binary_Op_Node.h"
 #include "Add_Command.h"
 
-class Add_Node : public Binary_Op_Node, public Add_Command
+class Add_Node : public Binary_Op_Node
 {
 public:
+    /// Default Constructor
     Add_Node (void);
+
+    /// Destructor
+    ~Add_Node (void);
 
     /**
      * Evaluate the sum of two numbers.
@@ -26,6 +30,12 @@ public:
      * @return          Sum of n1 and n2
      */
     int eval (int n1, int n2) override;
+
+    /// Accepts the visitor to the node.
+    void accept (Expr_Node_Visitor & v) override;
+
+    /// Get the priority of the command.
+    int priority (void) override;
 };
 
 #endif

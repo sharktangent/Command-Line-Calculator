@@ -16,6 +16,9 @@ class Divide_Command : public Binary_Op_Command
 public:
     /// Initialization Constructor.
     Divide_Command (Stack <int> & s);
+
+    /// Destructor
+    ~Divide_Command (void);
     
     /**
      * Get the quotient of two numbers
@@ -24,11 +27,10 @@ public:
      * @param[in]       n2      Divisor
      * @return          Quotient of n1 and n2.
      */
-    int evaluate (int n1, int n2) const override;
+    int eval (int n1, int n2) override;
 
-protected:
-    /// sets the priority value for the command
-    void set_priority (void) override;
+    /// Gets the priority of the command
+    int priority (void) override;
 };
 
 #endif

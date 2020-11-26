@@ -15,6 +15,7 @@
 //
 Binary_Op_Node::~Binary_Op_Node (void)
 {
+    // delete the left and right child.
     delete this->right_;
     delete this->left_;
 }

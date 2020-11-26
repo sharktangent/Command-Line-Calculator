@@ -6,23 +6,21 @@
  * on this assignment.
  */
 //==============================================================================
-#include "Number_Command.h"
 
+#include "Expr_Node.h"
+
+// 
+// Expr_Node
 //
-// Number_Command
-//
-Number_Command::Number_Command (Stack <int> & s, int n)
-: Expr_Command (s),
-  num_ (n)
+Expr_Node::Expr_Node (void)
 {
     
 }
 
 //
-// execute
+// ~Expr_Node
 //
-void Number_Command::execute (void)
+Expr_Node::~Expr_Node (void)
 {
-    // push the number to the stack
-    this->stack_.push(this->num_);
+    // No members on Heap
 }

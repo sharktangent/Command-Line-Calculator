@@ -21,10 +21,6 @@ public:
     /// Executes the Number Command.
     void execute (void) override;
 
-protected:
-    /// sets the priority value for the command
-    void set_priority (void) override;
-
 private:
     /// Number to be pushed
     int num_;

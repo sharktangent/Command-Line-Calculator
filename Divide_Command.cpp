@@ -15,13 +15,21 @@
 Divide_Command::Divide_Command (Stack <int> & s)
 : Binary_Op_Command (s)
 {
-    this->set_priority();
+
 }
 
 //
-// evaluate
+// ~Divide_Command
 //
-int Divide_Command::evaluate (int n1, int n2) const
+Divide_Command::~Divide_Command (void)
+{
+    // No members on heap
+}
+
+//
+// eval
+//
+int Divide_Command::eval (int n1, int n2)
 {
     // check to make sure there won't be a divide by 0 error
     // throw if there will be.
@@ -35,10 +43,10 @@ int Divide_Command::evaluate (int n1, int n2) const
 }
 
 //
-// set_priority
+// priority
 //
-void Divide_Command::set_priority (void)
+int Divide_Command::priority (void)
 {   
     // priority for divide is 2
-    this->priority_ = 2;
+    return 2;
 }

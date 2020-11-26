@@ -17,6 +17,9 @@ public:
     /// Initialization Constructor
     Subtract_Command (Stack <int> & s);
 
+    /// Destructor
+    ~Subtract_Command (void);
+
     /**
      * Get the difference of two numbers.
      * 
@@ -24,11 +27,10 @@ public:
      * @param[in]       n2      Second Number
      * @return          Difference of n1 and n2
      */
-    int evaluate (int n1, int n2) const override;
+    int eval (int n1, int n2) override;
 
-protected:
-    /// sets the priority value for the command
-    void set_priority (void) override;
+    /// Gets the priority for the command
+    int priority (void) override;
 };
 
 #endif

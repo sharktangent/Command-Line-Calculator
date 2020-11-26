@@ -15,13 +15,21 @@
 Mod_Command::Mod_Command (Stack <int> & s)
 : Binary_Op_Command (s)
 {
-    this->set_priority();
+
+}
+
+//
+// ~Mod_Command
+//
+Mod_Command::~Mod_Command (void)
+{
+    // No members on heap.
 }
 
 //
 // evaluate
 //
-int Mod_Command::evaluate (int n1, int n2) const
+int Mod_Command::eval (int n1, int n2)
 {
     // Throw if the Divisor is 0
     if (n2 == 0)
@@ -33,10 +41,10 @@ int Mod_Command::evaluate (int n1, int n2) const
 }
 
 //
-// set_priority
+// priority
 //
-void Mod_Command::set_priority (void)
+int Mod_Command::priority (void)
 {
     // priority for mod is 2
-    this->priority_ = 2;
+    return 2;
 }
