@@ -11,6 +11,12 @@
 #define _EVAL_EXPR_TREE_H_
 
 #include "Expr_Node_Visitor.h"
+#include "Add_Node.h"
+#include "Subtract_Node.h"
+#include "Multiply_Node.h"
+#include "Divide_Node.h"
+#include "Mod_Node.h"
+#include "Number_Node.h"
 
 class Eval_Expr_Tree : public Expr_Node_Visitor
 {

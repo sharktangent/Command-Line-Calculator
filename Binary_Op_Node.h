@@ -11,7 +11,6 @@
 #define _BINARY_OP_NODE_H_
 
 #include "Expr_Node.h"
-#include "Binary_Op_Command.h"
 #include <stdexcept>
 
 class Binary_Op_Node : public Expr_Node

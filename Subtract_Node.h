@@ -8,9 +8,11 @@
 //==============================================================================
 
 #ifndef _SUBTRACT_NODE_H_
-#define _SUBTRACT_NODE_H
+#define _SUBTRACT_NODE_H_
 
 #include "Binary_Op_Node.h"
+
+//class Expr_Node_Visitor;
 
 class Subtract_Node : public Binary_Op_Node
 {

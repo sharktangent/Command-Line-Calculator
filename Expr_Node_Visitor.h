@@ -10,12 +10,14 @@
 #ifndef _EXPR_NODE_VISITOR_H_
 #define _EXPR_NODE_VISITOR_H_
 
-#include "Number_Node.h"
-#include "Add_Node.h"
-#include "Subtract_Node.h"
-#include "Multiply_Node.h"
-#include "Divide_Node.h"
-#include "Mod_Node.h"
+
+class Number_Node;
+class Add_Node;
+class Subtract_Node;
+class Multiply_Node;
+class Divide_Node;
+class Mod_Node;
+
 
 class Expr_Node_Visitor
 {

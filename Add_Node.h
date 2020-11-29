@@ -11,7 +11,9 @@
 #define _ADD_NODE_H_
 
 #include "Binary_Op_Node.h"
-#include "Add_Command.h"
+
+
+//class Expr_Node_Visitor;
 
 class Add_Node : public Binary_Op_Node
 {

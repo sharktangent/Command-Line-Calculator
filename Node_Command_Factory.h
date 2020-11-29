@@ -10,6 +10,8 @@
 #ifndef _NODE_EXPR_COMMAND_FACTORY_H_
 #define _NODE_EXPR_COMMAND_FACTORY_H_
 
+#include "Expr_Node.h"
+#include "Binary_Op_Node.h"
 #include "Number_Node.h"
 #include "Add_Node.h"
 #include "Subtract_Node.h"

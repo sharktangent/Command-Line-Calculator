@@ -11,7 +11,8 @@
 #define _MULTIPLY_NODE_H_
 
 #include "Binary_Op_Node.h"
-#include "Multiply_Command.h"
+
+
 
 class Multiply_Node : public Binary_Op_Node
 {

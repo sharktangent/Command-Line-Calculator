@@ -10,9 +10,10 @@
 #ifndef _CALCULATOR_H_
 #define _CALCULATOR_H_
 
-#include "Stack_Expr_Command_Factory.h"
+#include "Expr_Tree_Builder.h"
 #include "Array.h"
 #include "Array_Iterator.h"
+#include "Eval_Expr_Tree.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -36,33 +37,23 @@ public:
      */
     bool get_input (void);
 
-    /// Converts an infix expression to a postfix expression
-    void infix_to_postfix (void);
+    /// Sets the input of the calculator
+    void set_input (std::string input);
 
-    /// Evaluate the postfix expression and print the result
-    void evaluate_postfix (void);
+    /// Parse the expression and
+    void parse_expr (void);
 
-    /**
-     * deletes all commands from postfix_ and resets its size
-     * as if the destructor was called without actually 
-     * destructing the calculator.
-     */
-    void reset_postfix (void);
+    /// Evaluate the expression and print the result
+    int evaluate_expr (void);
+
+    /// Gets the infix expression.
+    std::string get_infix (void);
 
         
 private:
-
-    /// Stack of ints to be passed to the command factory.
-    Stack<int> int_stack_;
-
-    /// Command Factory
-    Stack_Expr_Command_Factory factory_;
-
     /// String that holds the infix expression
     std::string infix_;
-
-    /// Array of Expr_Command pointers that holds the postfix expression.
-    Array <Expr_Command *> postfix_;
+    Expr_Tree_Builder builder_;
 };
 
 #endif

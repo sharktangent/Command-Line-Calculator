@@ -11,7 +11,6 @@
 #define _NUMBER_NODE_H_
 
 #include "Expr_Node.h"
-#include "Number_Command.h"
 
 class Number_Node : public Expr_Node
 {

@@ -54,7 +54,7 @@ void Binary_Op_Command::execute (void)
 
     try
     {
-        result = this->evaluate(n1, n2);
+        result = this->eval(n1, n2);
     }
     catch (const std::domain_error & e)
     {

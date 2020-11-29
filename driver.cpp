@@ -8,6 +8,7 @@
 //==============================================================================
 
 #include "Calculator.h"
+#include <iostream>
 
 // forward declarations
 
@@ -35,15 +36,18 @@ int main (int argc, char * argv [])
         {
             try
             {
-                // convert to infix, evaluate, then reset the postfix
-                calc.infix_to_postfix();
-                calc.evaluate_postfix();
-                calc.reset_postfix();
+                // convert to infix, evaluate, and print
+                calc.parse_expr();
+                std::cout << calc.evaluate_expr() << std::endl;
             }
             catch (const std::invalid_argument & e)
             {
                 // warn the user of an ivalid expression.
                 std::cout << "Invalid Expression entered." << std::endl;
+            }
+            catch (const std::domain_error & e)
+            {
+                std::cout << "Calculation Error." << std::endl;
             }
         }
         else

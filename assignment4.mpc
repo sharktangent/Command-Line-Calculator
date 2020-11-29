@@ -1,5 +1,5 @@
-project (assignment3) {
-    exename = assignment3
+project (assignment4) {
+    exename = assignment4
     install = .
 
     specific (make, gnuance) {
@@ -20,6 +20,20 @@ project (assignment3) {
         Expr_Command_Factory.cpp
         Stack_Expr_Command_Factory.cpp
         Calculator.cpp
+        Expr_Node.cpp
+        Binary_Op_Node.cpp
+        Number_Node.cpp
+        Add_Node.cpp
+        Subtract_Node.cpp
+        Multiply_Node.cpp
+        Divide_Node.cpp
+        Mod_Node.cpp
+        Node_Command_Factory.cpp
+        Standard_Node_Command_Factory.cpp
+        Expr_Node_Visitor.cpp
+        Eval_Expr_Tree.cpp
+        Expr_Builder.cpp
+        Expr_Tree_Builder.cpp
     }
 
     Template_Files {
@@ -51,6 +65,20 @@ project (assignment3) {
         Expr_Command_Factory.h
         Stack_Expr_Command_Factory.h
         Calculator.h
+        Expr_Node.h
+        Binary_Op_Node.h
+        Number_Node.h
+        Add_Node.h
+        Subtract_Node.h
+        Multiply_Node.h
+        Divide_Node.h
+        Mod_Node.h
+        Node_Command_Factory.h
+        Standard_Node_Command_Factory.h
+        Expr_Node_Visitor.h
+        Eval_Expr_Tree.h
+        Expr_Builder.h
+        Expr_Tree_Builder.h
     }
 
     Inline_Files {

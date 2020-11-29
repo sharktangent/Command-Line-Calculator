@@ -13,10 +13,8 @@
 // Calculator
 //
 Calculator::Calculator (void)
-: int_stack_ (),
-  factory_ (int_stack_),
-  infix_ (),
-  postfix_ ()
+: infix_ (),
+  builder_ ()
 {
 
 }
@@ -26,12 +24,7 @@ Calculator::Calculator (void)
 //
 Calculator::~Calculator (void)
 {
-    // Delete postfix_'s pointers since the Array Class
-    // Wont be able to do so on its own.
-    for (int i = 0; i < this->postfix_.size(); i++)
-    {
-        delete this->postfix_[i];
-    }
+    
 }
 
 //
@@ -51,75 +44,93 @@ bool Calculator::get_input (void)
 }
 
 //
+// set_input
+//
+void Calculator::set_input (std::string input)
+{
+    this->infix_ = input;
+}
+
+//
 // infix_to_postfix
 //
-void Calculator::infix_to_postfix (void)
+void Calculator::parse_expr (void)
 {
-    std::istringstream input(this->infix_);
+    // input stream parser
+    std::stringstream input (this->infix_);
+    // token to hold each part of the expression
     std::string token;
+
+    // calculator for allowing parentheses
+    Calculator parenth;
+
     int num;
-    Expr_Command * cmd = nullptr;
 
-    // A stack of stacks allows for easy managing of parentheses
-    // a new stack will be added upon open parentheses
-    // nested stacks are popped upon closing parentheses
-    Stack <Stack <Expr_Command *> *> cmd_stacks;
+    // start a new expression
+    this->builder_.start_expression();
 
-    cmd_stacks.push(new Stack <Expr_Command *>());
-
-    // read through the infix expression
+    // loop until the end of the input stream is reached
     while (!input.eof())
     {
+        // put input into token
         input >> token;
 
+        // determine the token type and use the builder to create the correct token
         if (token == "+")
         {
-            cmd = this->factory_.create_add_command();
+            this->builder_.build_add_op();
         }
         else if (token == "-")
         {
-            cmd = this->factory_.create_subtract_command();
+            this->builder_.build_subtract_op();
         }
         else if (token == "*")
         {
-            cmd = this->factory_.create_multiply_command();
+            this->builder_.build_multiply_op();
         }
         else if (token == "/")
         {
-            cmd = this->factory_.create_divide_command();
+            this->builder_.build_divide_op();
         }
         else if (token == "%")
         {
-            cmd = this->factory_.create_mod_command();
+            this->builder_.build_mod_op();
         }
         else if (token == "(")
         {
-            // push a new stack onto cmd_stacks
-            cmd_stacks.push(new Stack <Expr_Command *>());
+
+            // separate the parenthetical part of the string to pass to parenth
+            std::getline(input, token);
+            try 
+            {
+                // set the input on the parenth expression
+                // parse parenth and set num to the result of parenth
+                parenth.set_input(token);
+                parenth.parse_expr();
+                num = parenth.evaluate_expr();
+
+                // build the result of parenth, and set the str for input
+                // to what remains of parenth's infix.
+                this->builder_.build_number(num);
+                input.str(parenth.get_infix());
+            }
+            catch (const std::invalid_argument & e)
+            {
+                // throw if invalid argument is caught
+                throw e;
+            }
+            catch (const std::domain_error & e)
+            {
+                // throw if domain error
+                throw e;
+            }
         }
         else if (token == ")")
         {
-            // move all commands in the current stack to the postfix array.
-            while(!cmd_stacks.top()->is_empty())
-            {
-                this->postfix_.resize(this->postfix_.size() + 1);
-                this->postfix_[this->postfix_.size() - 1] = cmd_stacks.top()->top();
-                cmd_stacks.top()->pop();
-            }
-
-            // move down a stack only
-            // if thesize of cmd_stacks is greater than 1
-            // to prevent popping the first stack.
-            if (cmd_stacks.size() > 1)
-            {
-                // delete the top stack and then pop it
-                delete cmd_stacks.top();
-                cmd_stacks.pop();
-            }
+            break;
         }
         else
         {
-            // try to convert token to a number, throw if failed
             try
             {
                 num = std::stoi(token);
@@ -129,94 +140,41 @@ void Calculator::infix_to_postfix (void)
                 throw e;
             }
 
-            cmd = this->factory_.create_number_command(num);
-
-            // put the command into the postfix array
-            this->postfix_.resize(this->postfix_.size() + 1);
-            this->postfix_[this->postfix_.size() - 1] = cmd;
+            this->builder_.build_number(num);
         }
-
-        // if the command is an operator
-        if (cmd != nullptr && cmd->priority() != 0)
-        {
-            // move higher priority operators to the postfix array before pushing cmd
-            while (!cmd_stacks.top()->is_empty() && cmd->priority() <= cmd_stacks.top()->top()->priority())
-            {
-                // insert the command into postfix
-                this->postfix_.resize(this->postfix_.size() + 1);
-                this->postfix_[this->postfix_.size() - 1] = cmd_stacks.top()->top();
-                cmd_stacks.top()->pop();
-            }
-
-            // push cmd to the stack
-            cmd_stacks.top()->push(cmd);
-        }
-        
-        // reset cmd to nullptr
-        cmd = nullptr;
     }
 
-    // put the remaining commands into the postfix array
-    while (!cmd_stacks.is_empty())
-    {
-        // put commands from the top stack into the postfix array
-        while (!cmd_stacks.top()->is_empty())
-        {
-            this->postfix_.resize(this->postfix_.size() + 1);
-            this->postfix_[this->postfix_.size() - 1] = cmd_stacks.top()->top();
-            cmd_stacks.top()->pop();
-        }
-
-        // delete then pop the top stack;
-        delete cmd_stacks.top();
-        cmd_stacks.pop();
-    }
+    // getline so that if a closing parentheses breaks the expression
+    // the rest of the expression can be returned in get_infix
+    std::getline(input, this->infix_);
 }
 
 //
 // evaluate_postfix
 //
-void Calculator::evaluate_postfix (void)
+int Calculator::evaluate_expr (void)
 {
-    // create the iterator for the postfix array
-    Array_Iterator <Expr_Command *> iter(this->postfix_);
-
-    // try to evaluate the expression. catch 
+    // visitor to evaluate the expression.
+    Eval_Expr_Tree eval;
     try
     {
-        for (; !iter.is_done(); iter.next())
-        {
-            iter.current_item()->execute();
-        }
-
-        // check to make sure the stack isn't empty
-        // before trying to print.
-        if (!this->int_stack_.is_empty())
-        {
-            std::cout << this->int_stack_.top() << std::endl;
-        }
-        else
-        {
-            std::cout << "0" << std::endl;
-        }
+        // accept eval for the root of builder
+        this->builder_.get_root()->accept(eval);
     }
     catch (const std::domain_error & e)
     {
-        std::cout << "Error: Divide by 0" << std::endl;
+        // throw if a domain error is caught
+        throw e;
     }
+
+    // return the result.
+    return eval.result();
 }
 
 //
-// reset_postfix
+// get_infix
 //
-void Calculator::reset_postfix (void)
+std::string Calculator::get_infix (void)
 {
-    // delete every command in postfix
-    for (int i = 0; i < this->postfix_.size(); i++)
-    {
-        delete this->postfix_[i];
-    }
-
-    // set size to 0.
-    this->postfix_.resize(0);
+    return this->infix_;
 }
