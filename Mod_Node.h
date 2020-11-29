@@ -22,15 +22,6 @@ public:
 
     /// Destructor
     ~Mod_Node (void);
-    
-    /**
-     * Get the modulus of two numbers.
-     * 
-     * @param[in]       n1      Dividend.
-     * @param[in]       n2      Divisor.
-     * @return          Modulus of n1 and n2.
-     */  
-    int eval (int n1, int n2) override;
 
     /// Accept the visitor to this node.
     void accept (Expr_Node_Visitor & v) override;

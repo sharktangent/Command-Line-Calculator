@@ -27,6 +27,21 @@ public:
 
     /// Accepts the visitor to this node.
     void accept (Expr_Node_Visitor & v);
+
+    int priority (void) override;
+
+    Expr_Node * right (void) override;
+
+    Expr_Node * left (void) override;
+
+    bool has_right (void) override;
+
+    bool has_left (void) override;
+
+    void set_right (Expr_Node * node) override;
+
+    void set_left (Expr_Node * node) override;
+
 protected:
     /// Number stored within the number node.
     int num_;

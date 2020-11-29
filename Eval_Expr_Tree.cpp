@@ -34,7 +34,7 @@ void Eval_Expr_Tree::visit_add_node (Add_Node * node)
 {
     // visit the left child, and set coresult to the value of result
     // coresult gets 0 if the left child doesn't exist
-    if (node->left() != nullptr)
+    if (node->has_left())
     {
         node->left()->accept(*this);
         this->coresult_ = this->result_;
@@ -46,7 +46,7 @@ void Eval_Expr_Tree::visit_add_node (Add_Node * node)
 
     // visit the right child
     // result gets 0 if right child doesn't exist
-    if (node->right() != nullptr)
+    if (node->has_right())
     {
         node->right()->accept(*this);
     }
@@ -66,7 +66,7 @@ void Eval_Expr_Tree::visit_subtract_node (Subtract_Node * node)
 {
     // visit the left child, and set coresult to the value of result
     // coresult gets 0 if the left child doesn't exist
-    if (node->left() != nullptr)
+    if (node->has_left())
     {
         node->left()->accept(*this);
         this->coresult_ = this->result_;
@@ -78,7 +78,7 @@ void Eval_Expr_Tree::visit_subtract_node (Subtract_Node * node)
 
     // visit the right child
     // result gets 0 if right child doesn't exist
-    if (node->right() != nullptr)
+    if (node->has_right())
     {
         node->right()->accept(*this);
     }
@@ -97,7 +97,7 @@ void Eval_Expr_Tree::visit_multiply_node (Multiply_Node * node)
 {
     // visit the left child, and set coresult to the value of result
     // coresult gets 0 if the left child doesn't exist
-    if (node->left() != nullptr)
+    if (node->has_left())
     {
         node->left()->accept(*this);
         this->coresult_ = this->result_;
@@ -109,7 +109,7 @@ void Eval_Expr_Tree::visit_multiply_node (Multiply_Node * node)
 
     // visit the right child
     // result gets 0 if right child doesn't exist
-    if (node->right() != nullptr)
+    if (node->has_right())
     {
         node->right()->accept(*this);
     }
@@ -128,7 +128,7 @@ void Eval_Expr_Tree::visit_divide_node (Divide_Node * node)
 {
     // visit the left child, and set coresult to the value of result
     // coresult gets 0 if the left child doesn't exist
-    if (node->left() != nullptr)
+    if (node->has_left())
     {
         node->left()->accept(*this);
         this->coresult_ = this->result_;
@@ -140,7 +140,7 @@ void Eval_Expr_Tree::visit_divide_node (Divide_Node * node)
 
     // visit the right child
     // result gets 0 if right child doesn't exist
-    if (node->right() != nullptr)
+    if (node->has_right())
     {
         node->right()->accept(*this);
     }
@@ -165,7 +165,7 @@ void Eval_Expr_Tree::visit_mod_node (Mod_Node * node)
 {
     // visit the left child, and set coresult to the value of result
     // coresult gets 0 if the left child doesn't exist
-    if (node->left() != nullptr)
+    if (node->has_left())
     {
         node->left()->accept(*this);
         this->coresult_ = this->result_;
@@ -177,7 +177,7 @@ void Eval_Expr_Tree::visit_mod_node (Mod_Node * node)
 
     // visit the right child
     // result gets 0 if right child doesn't exist
-    if (node->right() != nullptr)
+    if (node->has_right())
     {
         node->right()->accept(*this);
     }

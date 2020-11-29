@@ -22,15 +22,6 @@ public:
     /// Destructor
     ~Multiply_Node (void);
 
-    /**
-     * Get the product of two numbers.
-     * 
-     * @param[in]       n1      First factor.
-     * @param[in]       n2      Second factor.
-     * @return          Product of n1 and n2.
-     */
-    int eval (int n1, int n2) override;
-
     /// Accept the visitor to this node.
     void accept (Expr_Node_Visitor & v) override;
 

@@ -12,32 +12,31 @@
 
 #include "Expr_Node.h"
 #include "Binary_Op_Command.h"
+#include <stdexcept>
 
 class Binary_Op_Node : public Expr_Node
 {
 public:
 
+    /// Default Constructor
+    Binary_Op_Node (void);
+
     /// Destructor
     ~Binary_Op_Node (void);
 
-    int execute (void) override;
+    Expr_Node * right (void) override;
 
-    virtual int eval (int num1, int n2) = 0;
+    Expr_Node * left (void) override;
 
-    virtual int priority (void) = 0;
+    bool has_right (void) override;
 
-    Expr_Node * right (void);
+    bool has_left (void) override;
 
-    Expr_Node * left (void);
+    void set_right (Expr_Node * node) override;
 
-    void set_right (Expr_Node * node);
-
-    void set_left (Expr_Node * node);
+    void set_left (Expr_Node * node) override;
 
 protected:
-
-    /// default constructor
-    Binary_Op_Node (void);
 
     /// right child of the binary operator
     Expr_Node * right_;

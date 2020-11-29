@@ -14,6 +14,7 @@
 // Mod_Node
 //
 Mod_Node::Mod_Node (void)
+: Binary_Op_Node ()
 {
 
 }
@@ -24,21 +25,6 @@ Mod_Node::Mod_Node (void)
 Mod_Node::~Mod_Node (void)
 {
     // no members on heap
-}
-
-//
-// eval
-//
-int Mod_Node::eval (int n1, int n2)
-{
-    // throw for a divide by zero error.
-    if (n2 == 0)
-    {
-        throw std::domain_error("Error: Divide by Zero.");
-    }
-
-    // return the mod of n1 and n2
-    return n1 % n2;
 }
 
 //

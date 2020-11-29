@@ -20,15 +20,6 @@ public:
 
     ~Divide_Node (void);
 
-    /**
-     * Get the quotient of two numbers
-     * 
-     * @param[in]       n1      Dividend
-     * @param[in]       n2      Divisor
-     * @return          Quotient of n1 and n2.
-     */
-    int eval (int n1, int n2) override;
-
     /// Accept the visitor to this node
     void accept (Expr_Node_Visitor & v) override;
 

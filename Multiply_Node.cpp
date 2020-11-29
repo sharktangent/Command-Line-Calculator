@@ -13,6 +13,7 @@
 // Multiply_Node
 //
 Multiply_Node::Multiply_Node (void)
+: Binary_Op_Node ()
 {
 
 }
@@ -23,15 +24,6 @@ Multiply_Node::Multiply_Node (void)
 Multiply_Node::~Multiply_Node (void)
 {
     // No members on heap
-}
-
-//
-// eval
-//
-int Multiply_Node::eval (int n1, int n2)
-{
-    // return the product of n1 and n2
-    return n1 * n2;
 }
 
 //

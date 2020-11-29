@@ -13,6 +13,7 @@
 // Subtract_Node
 //
 Subtract_Node::Subtract_Node (void)
+: Binary_Op_Node ()
 {
 
 }
@@ -23,15 +24,6 @@ Subtract_Node::Subtract_Node (void)
 Subtract_Node::~Subtract_Node (void)
 {
     // no members on heap
-}
-
-//
-// eval
-//
-int Subtract_Node::eval (int n1, int n2)
-{   
-    // return the difference of n1 and n2
-    return n1 - n2;
 }
 
 //

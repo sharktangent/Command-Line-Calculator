@@ -13,6 +13,7 @@
 // Add_Node
 //
 Add_Node::Add_Node (void)
+: Binary_Op_Node ()
 {
 
 }
@@ -23,15 +24,6 @@ Add_Node::Add_Node (void)
 Add_Node::~Add_Node (void)
 {
     // no members on heap
-}
-
-//
-// eval
-//
-int Add_Node::eval (int n1, int n2)
-{
-    // return the sum of n1 and n2
-    return n1 + n2;
 }
 
 //

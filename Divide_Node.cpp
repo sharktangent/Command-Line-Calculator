@@ -14,6 +14,7 @@
 // Divide_Node
 //
 Divide_Node::Divide_Node (void)
+: Binary_Op_Node ()
 {
 
 }
@@ -24,21 +25,6 @@ Divide_Node::Divide_Node (void)
 Divide_Node::~Divide_Node (void)
 {
     // No members on heap
-}
-
-//
-// eval
-//
-int Divide_Node::eval (int n1, int n2)
-{   
-    // Throw For a divide by zero error
-    if (n2 == 0)
-    {
-        throw std::domain_error("Error: Divide by Zero.");
-    }
-
-    // return the quotient of n1 and n2
-    return n1 / n2;
 }
 
 //

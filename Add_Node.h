@@ -22,15 +22,6 @@ public:
     /// Destructor
     ~Add_Node (void);
 
-    /**
-     * Evaluate the sum of two numbers.
-     * 
-     * @param[in]       n1      First number in the operation
-     * @param[in]       n2      Second number in the operation
-     * @return          Sum of n1 and n2
-     */
-    int eval (int n1, int n2) override;
-
     /// Accepts the visitor to the node.
     void accept (Expr_Node_Visitor & v) override;
 
